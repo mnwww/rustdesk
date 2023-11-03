@@ -286,10 +286,6 @@ impl Client {
         let mut signed_id_pk = Vec::new();
         let mut relay_server = "".to_owned();
 	
-        let rz_server = Config::get_option("custom-rendezvous-server");
-        let rz_key = Config::get_option("key");
-        let key = if rz_server.is_empty() && rz_key.is_empty() { hbb_common::config::RS_PUB_KEY } else { &rz_key };
-	
         if !key.is_empty() && !token.is_empty() {
             // mainly for the security of token
             allow_err!(secure_punch_connection(&mut socket, key).await);
