@@ -109,7 +109,7 @@ pub fn start(args: &mut [String]) {
         frame.register_behavior("connection-manager", move || {
             Box::new(cm::SciterConnectionManager::new())
         });
-        page = "cm.html";
+ //       page = "cm.html";
     } else if (args[0] == "--connect"
         || args[0] == "--file-transfer"
         || args[0] == "--port-forward"
@@ -153,8 +153,8 @@ pub fn start(args: &mut [String]) {
     {
         let html = if page == "index.html" {
             inline::get_index()
-        } else if page == "cm.html" {
-            inline::get_cm()
+ //       } else if page == "cm.html" {
+ //           inline::get_cm()
         } else if page == "install.html" {
             inline::get_install()
         } else {
