@@ -304,7 +304,7 @@ Widget buildConnectionCard(Client client) {
       crossAxisAlignment: CrossAxisAlignment.start,
       key: ValueKey(client.id),
       children: [
- //       _CmHeader(client: client),
+       _CmHeader(client: client),
         client.type_() != ClientType.remote || client.disconnected
             ? Offstage()
             : _PrivilegeBoard(client: client),
