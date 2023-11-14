@@ -304,7 +304,7 @@ Widget buildConnectionCard(Client client) {
       crossAxisAlignment: CrossAxisAlignment.start,
       key: ValueKey(client.id),
       children: [
-        _CmHeader(client: client),
+ //       _CmHeader(client: client),
         client.type_() != ClientType.remote || client.disconnected
             ? Offstage()
             : _PrivilegeBoard(client: client),
@@ -359,8 +359,8 @@ class _CmHeader extends StatefulWidget {
 
   const _CmHeader({Key? key, required this.client}) : super(key: key);
 
-//  @override
-//  State<_CmHeader> createState() => _CmHeaderState();
+  @override
+  State<_CmHeader> createState() => _CmHeaderState();
 }
 
 class _CmHeaderState extends State<_CmHeader>
