@@ -53,7 +53,7 @@ impl InvokeUiCM for SciterHandler {
     }
 
     fn show_elevation(&self, show: bool) {
-        self.call("showElevation", &make_args!(show));
+       // self.call("showElevation", &make_args!(show));
     }
 
     fn update_voice_call_state(&self, client: &crate::ui_cm_interface::Client) {
