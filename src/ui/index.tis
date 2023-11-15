@@ -565,7 +565,7 @@ class App: Reactor.Component
                 </div>
                 <div .right-pane>
                     <div .right-content>
-		        <div .custom-style>Rustdesk
+		        <div .custom-title>Rustdesk
 		        </div>
                     </div>
                     <ConnectStatus @{this.connect_status} />
