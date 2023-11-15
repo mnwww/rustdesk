@@ -565,9 +565,8 @@ class App: Reactor.Component
                 </div>
                 <div .right-pane>
                     <div .right-content>
-                        <div .card-connect>
-                        </div>
-                    
+		        <div style="font-size: 60px; font-weight: bold; text-align: center; line-height: 1.5; display: flex; align-items: center; justify-content: center;">{name}
+		        </div>
                     </div>
                     <ConnectStatus @{this.connect_status} />
                 </div>
