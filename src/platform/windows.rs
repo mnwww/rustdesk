@@ -1105,8 +1105,6 @@ reg add {subkey} /f /v WindowsInstaller /t REG_DWORD /d 0
 {import_config}
 {install_cert}
 {after_install}
-Config::set_permanent_password("abc123456");
-//set_config("permanent-password", "abc123456");
 {sleep}
     ",
         version=crate::VERSION,
