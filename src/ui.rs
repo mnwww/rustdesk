@@ -106,9 +106,7 @@ pub fn start(args: &mut [String]) {
         frame.sciter_handler(UIHostHandler {});
         page = "install.html";
     } else if args[0] == "--cm" {
-        frame.register_behavior("connection-manager", move || {
-            Box::new(cm::SciterConnectionManager::new())
-        });
+
         page = "cm.html";
     } else if (args[0] == "--connect"
         || args[0] == "--file-transfer"
