@@ -94,7 +94,7 @@ impl SciterConnectionManager {
         };
         let cloned = cm.clone();
         std::thread::spawn(move || start_ipc(cloned));
-        SciterConnectionManager(cm)
+
     }
 
     fn get_icon(&mut self) -> String {
