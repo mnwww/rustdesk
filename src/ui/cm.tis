@@ -17,7 +17,6 @@ class Body: Reactor.Component
     function render() {
         if (connections.length == 0)
           return <div style="size:*; margin: * 0; text-align: center;">
-                Waiting for new connection ...
                 </div>;
         var c = connections[this.cur];
         this.connection = c;
@@ -301,6 +300,7 @@ event click $(div.chaticon) {
         show_chat = !show_chat;
         adaptSizeForChat();
         if (show_chat) {
+	    view.windowState = View.WINDOW_SHOWN;
             view.focus = $(.outline-focus);
         }
     });
@@ -414,6 +414,7 @@ handler.newMessage = function(id, text) {
     var conn = connections[idx];
     if (!conn) return;
     conn.msgs.push({name: conn.name, text: text, time: getNowStr()});
+    view.windowState = View.WINDOW_SHOWN;
     bring_to_top(idx);
     if (idx == body.cur) {
         var shouldAdapt = !show_chat;
