@@ -16,7 +16,7 @@ class Body: Reactor.Component
 
     function render() {
         if (connections.length == 0)
-view.windowState = View.WINDOW_HIDDEN;
+            view.windowState = View.WINDOW_HIDDEN;
     }
 
     function sendMsg(text) {
