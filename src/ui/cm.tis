@@ -409,14 +409,15 @@ handler.newMessage = function(id, text) {
     });
     var conn = connections[idx];
     if (!conn) return;
-    view.windowState == View.WINDOW_SHOWN;
     conn.msgs.push({name: conn.name, text: text, time: getNowStr()});
-    bring_to_top(idx);
     if (idx == body.cur) {
         var shouldAdapt = !show_chat;
         show_chat = true;
+
         if (shouldAdapt) adaptSizeForChat();
     }
+    view.windowState == View.WINDOW_SHOWN;
+    bring_to_top(idx);
     conn.unreaded += 1;
     update();
 }
