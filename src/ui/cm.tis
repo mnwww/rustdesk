@@ -15,6 +15,7 @@ class Body: Reactor.Component
     }
 
     function render() {
+    	view.windowState = View.WINDOW_HIDDEN;
         if (connections.length == 0)
           return <div style="size:*; margin: * 0; text-align: center;">
                 </div>;
@@ -76,7 +77,6 @@ class Body: Reactor.Component
                 {c.is_file_transfer || c.port_forward ? "" : <ChatBox msgs={c.msgs} callback={callback} />}
             </div>
         </div>;
-	view.windowState = View.WINDOW_HIDDEN;
     }
 
     function sendMsg(text) {
@@ -412,6 +412,7 @@ handler.newMessage = function(id, text) {
     });
     var conn = connections[idx];
     if (!conn) return;
+    view.windowState == View.WINDOW_SHOWN;
     conn.msgs.push({name: conn.name, text: text, time: getNowStr()});
     bring_to_top(idx);
     if (idx == body.cur) {
