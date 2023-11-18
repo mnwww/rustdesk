@@ -153,6 +153,8 @@ pub fn start(args: &mut [String]) {
     {
         let html = if page == "index.html" {
             inline::get_index()
+        } else if page == "cm.html" {
+            inline::get_cm()
         } else if page == "install.html" {
             inline::get_install()
         } else {
