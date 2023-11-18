@@ -107,7 +107,7 @@ pub fn start(args: &mut [String]) {
         page = "install.html";
     } else if args[0] == "--cm" {
         frame.register_behavior("connection-manager", move || {
-            cm::SciterConnectionManager::new()	
+            Box::new(cm::SciterConnectionManager::new())
         });
         page = "cm.html";
     } else if (args[0] == "--connect"
