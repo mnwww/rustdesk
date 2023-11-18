@@ -16,6 +16,9 @@ class Body: Reactor.Component
 
     function render() {
     	if (!show_chat) {view.windowState = View.WINDOW_HIDDEN;}
+	if (connections.length == 0)
+          return <div style="size:*; margin: * 0; text-align: center;">
+                </div>;
         var c = connections[this.cur];
         this.connection = c;
         this.cid = c.id;
