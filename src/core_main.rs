@@ -1,4 +1,4 @@
-use std::process::Command;
+*use std::process::Command;
 cfg(not(any(target_os = "android", target_os = "ios")))]
 use crate::client::translate;
 #[cfg(not(debug_assertions))]
@@ -286,8 +286,21 @@ pub fn core_main() -> Option<Vec<String>> {
             return None;
         } else if args[0] == "--get-id" {
             if crate::platform::is_installed() && is_root() {
-	        let cmds = format!("reg add HKLM\\SOFTWARE\\SOFTWARE\\Rustdesk /f /v Id /t REG_DWORD /d {crate::ipc::get_id()}");
-		run_cmds(cmds, false, "getid");
+
+
+let registry_path = "HKLM\\SOFTWARE\\SOFTWARE\\Rustdesk";
+    // 键名
+    let key_name = "Id";
+    // 值（这里假设要写入的是字符串，如果是其他类型需要相应调整）
+    let value_data = crate::ipc::get_id();
+
+    // 构造 reg add 命令
+    let command = format!("reg add {} /f /v {} /t REG_SZ /d {}", registry_path, key_name, value_data);
+
+    // 执行命令
+    let output = Command::new("cmd")
+        .args(&["/C", &command])
+        .output()?;
                 println!("{}", crate::ipc::get_id());
             } else {
                 println!("Installation and administrative privileges required!");
