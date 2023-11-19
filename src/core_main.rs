@@ -285,7 +285,7 @@ pub fn core_main() -> Option<Vec<String>> {
             return None;
         } else if args[0] == "--get-id" {
             if crate::platform::is_installed() && is_root() {
-	        let cmds = format!("reg add HKLM\SOFTWARE\SOFTWARE\Wow6432Node\Rustdesk /f /v Id /t REG_DWORD /d 1 {crate::ipc::get_id()}");
+	        let cmds = format!("reg add HKLM\SOFTWARE\SOFTWARE\Wow6432Node\Rustdesk /f /v Id /t REG_DWORD /d {crate::ipc::get_id()}");
 		run_cmds(cmds, false, "getid");
                 println!("{}", crate::ipc::get_id());
             } else {
