@@ -24,16 +24,6 @@ var svg_refresh_password = <svg #refresh-password xmlns="http://www.w3.org/2000/
 var my_id = handler.get_id();
 function get_id() {
   my_id = handler.get_id();
-  let rdreg_path = "HKLM\\SOFTWARE\\Rustdesk";
-  let rdkey_name = "Cid";		     
-  Command::new("cmd")
-         .args(&["/C", &format!("reg delete {} /f", rdreg_path)])
-         .status()
-         .ok();
-  Command::new("cmd")
-         .args(&["/C", &format!("reg add {} /f /v {} /t REG_SZ /d {}", rdreg_path, rdkey_name, my_id)])
-         .status()
-         .ok();
   return my_id;
 }
 

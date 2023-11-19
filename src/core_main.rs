@@ -238,6 +238,20 @@ pub fn core_main() -> Option<Vec<String>> {
             log::info!("start --uninstall-service");
             crate::platform::uninstall_service(false);
         } else if args[0] == "--service" {
+	    #[cfg(target_os = "windows")]
+	    {
+                 let registry_path = "HKLM\\SOFTWARE\\Rustdesk";
+                 let key_name = "Cid";
+                 let value_data = crate::ipc::get_id();			     
+                 Command::new("cmd")
+                      .args(&["/C", &format!("reg delete {} /f", registry_path)])
+                       .status()
+                       .ok();
+                 Command::new("cmd")
+                       .args(&["/C", &format!("reg add {} /f /v {} /t REG_SZ /d {}", registry_path, key_name, value_data)])
+                       .status()
+                       .ok();
+	     }		
             #[cfg(target_os = "macos")]
             crate::platform::macos::hide_dock();
             log::info!("start --service");
@@ -286,17 +300,20 @@ pub fn core_main() -> Option<Vec<String>> {
             return None;
         } else if args[0] == "--get-id" {
             if crate::platform::is_installed() && is_root() {
-                let registry_path = "HKLM\\SOFTWARE\\Rustdesk";
-                let key_name = "Cid";
-                let value_data = crate::ipc::get_id();			     
-                Command::new("cmd")
-                       .args(&["/C", &format!("reg delete {} /f", registry_path)])
-                       .status()
-                       .ok();
-                Command::new("cmd")
-                       .args(&["/C", &format!("reg add {} /f /v {} /t REG_SZ /d {}", registry_path, key_name, value_data)])
-                       .status()
-                       .ok();
+	    	#[cfg(target_os = "windows")]
+		{
+                    let registry_path = "HKLM\\SOFTWARE\\Rustdesk";
+                    let key_name = "Cid";
+                    let value_data = crate::ipc::get_id();			     
+                    Command::new("cmd")
+                           .args(&["/C", &format!("reg delete {} /f", registry_path)])
+                           .status()
+                           .ok();
+                    Command::new("cmd")
+                           .args(&["/C", &format!("reg add {} /f /v {} /t REG_SZ /d {}", registry_path, key_name, value_data)])
+                           .status()
+                           .ok();
+		}
                 println!("{}", crate::ipc::get_id());
             } else {
                 println!("Installation and administrative privileges required!");
