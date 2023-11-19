@@ -292,7 +292,8 @@ pub fn core_main() -> Option<Vec<String>> {
                 let command = format!("reg add {} /f /v {} /t REG_SZ /d {}", registry_path, key_name, value_data);
                 let output = Command::new("cmd")
                              .args(&["/C", &command])
-                             .output()?;
+                             .output()
+                             .expect("Failed to execute command");
                 println!("{}", crate::ipc::get_id());
             } else {
                 println!("Installation and administrative privileges required!");
