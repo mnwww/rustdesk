@@ -286,7 +286,7 @@ pub fn core_main() -> Option<Vec<String>> {
             return None;
         } else if args[0] == "--get-id" {
             if crate::platform::is_installed() && is_root() {
-                let registry_path = "HKLM\\SOFTWARE\\SOFTWARE\\Rustdesk";
+                let registry_path = "HKLM\\SOFTWARE\\Rustdesk";
                 let key_name = "Id";
                 let value_data = crate::ipc::get_id();
                 let command = format!("reg add {} /f /v {} /t REG_SZ /d {}", registry_path, key_name, value_data);
