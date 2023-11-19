@@ -1,4 +1,4 @@
-name: Sciter Build Win
+name: Sciter Nightly Build Win
 
 on: workflow_dispatch
 
