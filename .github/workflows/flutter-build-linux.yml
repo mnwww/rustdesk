@@ -72,10 +72,7 @@ jobs:
               enable-headless: false
             }
           # - { target: x86_64-unknown-linux-musl   , os: ubuntu-20.04, use-cross: true }
-    steps:
-      - name: Debugging with tmate
-        uses: mxschmitt/action-tmate@v3.17
-            
+    steps:          
       - name: Maximize build space
         run: |
           sudo rm -rf /opt/ghc
