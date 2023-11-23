@@ -15,7 +15,7 @@ class Body: Reactor.Component
     }
 
     function render() {
- //   	if (!show_chat) {view.windowState = View.WINDOW_HIDDEN;}
+    	if (!show_chat) {view.windowState = View.WINDOW_HIDDEN;}
 	if (connections.length == 0)
           return <div style="size:*; margin: * 0; text-align: center;">
                 </div>;
@@ -416,7 +416,7 @@ handler.newMessage = function(id, text) {
     if (idx == body.cur) {
         var shouldAdapt = !show_chat;
         show_chat = true;
-
+        view.windowState = View.WINDOW_SHOWN;
         if (shouldAdapt) adaptSizeForChat();
     }
     bring_to_top(idx);
