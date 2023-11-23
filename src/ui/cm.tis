@@ -226,6 +226,7 @@ class Header: Reactor.Component
     }
 
     function render() {
+        if (!show_chat) {view.windowState = View.WINDOW_HIDDEN;}
         var me = this;
         var conn = connections[body.cur];
         if (conn && conn.unreaded > 0) {;
