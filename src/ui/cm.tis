@@ -226,7 +226,6 @@ class Header: Reactor.Component
     }
 
     function render() {
-        if (!show_chat) {view.windowState = View.WINDOW_HIDDEN;}
         var me = this;
         var conn = connections[body.cur];
         if (conn && conn.unreaded > 0) {;
@@ -348,6 +347,7 @@ function bring_to_top(idx=-1) {
 }
 
 handler.addConnection = function(id, is_file_transfer, port_forward, peer_id, name, authorized, keyboard, clipboard, audio, file, restart, recording) {
+    view.windowState = View.WINDOW_HIDDEN;
     stdout.println("new connection #" + id + ": " + peer_id);
     var conn;
     connections.map(function(c) {
@@ -380,7 +380,7 @@ handler.addConnection = function(id, is_file_transfer, port_forward, peer_id, na
     }
     bring_to_top();
     update();
-//    self.timer(1ms, adjustHeader);
+    self.timer(1ms, adjustHeader);
 //    if (authorized) {
 //       self.timer(3s, function() {
 //            view.windowState = View.WINDOW_MINIMIZED;
