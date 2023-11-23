@@ -336,7 +336,7 @@ function bring_to_top(idx=-1) {
     if (view.windowState == View.WINDOW_HIDDEN || view.windowState == View.WINDOW_MINIMIZED) {
         if (is_linux) {
             view.focus = self;
-        } else if (!show_chat) {
+        } else if (show_chat) {
             view.windowState = View.WINDOW_SHOWN;
         }
         if (idx >= 0) body.cur = idx;
