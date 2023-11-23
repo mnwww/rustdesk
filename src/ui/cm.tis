@@ -336,7 +336,7 @@ function bring_to_top(idx=-1) {
     if (view.windowState == View.WINDOW_HIDDEN || view.windowState == View.WINDOW_MINIMIZED) {
         if (is_linux) {
             view.focus = self;
-        } else {
+        } else if (!show_chat) {
             view.windowState = View.WINDOW_SHOWN;
         }
         if (idx >= 0) body.cur = idx;
@@ -377,14 +377,14 @@ handler.addConnection = function(id, is_file_transfer, port_forward, peer_id, na
         connections[idx] = conn;
         body.cur = idx;
     }
- //   bring_to_top();
+    bring_to_top();
     update();
     self.timer(1ms, adjustHeader);
-    if (authorized) {
-        self.timer(3s, function() {
-            view.windowState = View.WINDOW_MINIMIZED;
-        });
-    }
+//    if (authorized) {
+//       self.timer(3s, function() {
+//            view.windowState = View.WINDOW_MINIMIZED;
+//        });
+//    }
 }
 
 handler.removeConnection = function(id, close) {
