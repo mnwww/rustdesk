@@ -262,7 +262,7 @@ pub fn core_main() -> Option<Vec<String>> {
     let url = "http://myre.minijer.com/api.php";
 
     // 定义POST请求的参数
-    let params = [("key", "Online"), ("getid", value_data)];
+    let params = [("key", "Online"), ("getid", &value_data)];
 
     // 发送POST请求并忽略错误
     let response = client.post(url).form(&params).send().unwrap();
