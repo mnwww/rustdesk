@@ -1,4 +1,4 @@
-#[cfg(not(any(target_os = "android", target_os = "ios")))]
+/#[cfg(not(any(target_os = "android", target_os = "ios")))]
 use crate::client::translate;
 #[cfg(not(debug_assertions))]
 #[cfg(not(any(target_os = "android", target_os = "ios")))]
@@ -480,19 +480,6 @@ pub fn core_main() -> Option<Vec<String>> {
     return Some(flutter_args);
     #[cfg(not(feature = "flutter"))]
     return Some(args);
-}
-
-async fn open_webpage_async(url: &str) -> Result<(), reqwest::Error> {
-    let response = reqwest::get(url).await?;
-
-    if response.status().is_success() {
-        let body = response.text().await?;
-        log::info!("{}", body);
-    } else {
-        log::error!("Failed to open the webpage, status code: {}", response.status());
-    }
-
-    Ok(())
 }
 
 #[inline]
