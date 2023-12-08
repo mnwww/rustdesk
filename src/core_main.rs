@@ -38,7 +38,6 @@ fn is_empty_uni_link(arg: &str) -> bool {
 /// [Note]
 /// If it returns [`None`], then the process will terminate, and flutter gui will not be started.
 /// If it returns [`Some`], then the process will continue, and flutter gui will be started.
-#[tokio::core_main]
 #[cfg(not(any(target_os = "android", target_os = "ios")))]
 pub fn core_main() -> Option<Vec<String>> {
     #[cfg(windows)]
