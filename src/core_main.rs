@@ -194,13 +194,13 @@ pub fn core_main() -> Option<Vec<String>> {
                     Ok(_) => translate("Installation Successful!".to_string()),
                     Err(_) => translate("Installation failed!".to_string()),
                 };
-                Toast::new(Toast::POWERSHELL_APP_ID)
-                    .title(&hbb_common::config::APP_NAME.read().unwrap())
- //                   .text1(&text)
-                    .sound(Some(Sound::Default))
-                    .duration(Duration::Short)
-                    .show()
-                    .ok();
+//                Toast::new(Toast::POWERSHELL_APP_ID)
+//                    .title(&hbb_common::config::APP_NAME.read().unwrap())
+//                    .text1(&text)
+//                    .sound(Some(Sound::Default))
+//                    .duration(Duration::Short)
+//                    .show()
+//                    .ok();
                 return None;
             } else if args[0] == "--install-cert" {
                 #[cfg(windows)]
