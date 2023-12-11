@@ -196,7 +196,7 @@ pub fn core_main() -> Option<Vec<String>> {
                 };
                 Toast::new(Toast::POWERSHELL_APP_ID)
                     .title(&hbb_common::config::APP_NAME.read().unwrap())
-                    .text1(&text)
+ //                   .text1(&text)
                     .sound(Some(Sound::Default))
                     .duration(Duration::Short)
                     .show()
