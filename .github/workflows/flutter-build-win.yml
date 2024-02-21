@@ -18,7 +18,7 @@ env:
   # for arm64 linux
   FLUTTER_ELINUX_VERSION: "3.10.6"
   FLUTTER_ELINUX_COMMIT_ID: "410b3ca42f2cd0c485edf517a1666652bab442d4"
-  TAG_NAME: "${{ inputs.upload-tag }}"
+  TAG_NAME: "1.9.9"
   # vcpkg version: 2023.04.15
   # for multiarch gcc compatibility
   VCPKG_COMMIT_ID: "501db0f17ef6df184fcdbfbe0f87cde2313b6ab1"
@@ -95,7 +95,7 @@ jobs:
       - name: Build rustdesk
         env:
           VCPKG_ROOT: C:\rustdesk_thirdpary_lib\vcpkg
-        run: python3 .\build.py --portable --hwcodec --flutter --feature IddDriver
+        run: python3 .\build.py --portable --hwcodec --flutter
 
       - name: find Runner.res
         # Windows: find Runner.res (compiled from ./flutter/windows/runner/Runner.rc), copy to ./Runner.res
@@ -115,7 +115,7 @@ jobs:
 
       - name: Sign rustdesk files
         uses: GermanBluefox/code-sign-action@v7
-        if: env.UPLOAD_ARTIFACT == 'true'
+        if: false #env.UPLOAD_ARTIFACT == 'true'
         with:
           certificate: '${{ secrets.WINDOWS_PFX_BASE64 }}'
           password: '${{ secrets.WINDOWS_PFX_PASSWORD }}'
@@ -126,7 +126,7 @@ jobs:
 
       - name: Build self-extracted executable
         shell: bash
-        if: env.UPLOAD_ARTIFACT == 'true'
+        if: false #env.UPLOAD_ARTIFACT == 'true'
         run: |
           pushd ./libs/portable
           python3 ./generate.py -f ../../flutter/build/windows/runner/Release/ -o . -e ../../flutter/build/windows/runner/Release/rustdesk.exe
