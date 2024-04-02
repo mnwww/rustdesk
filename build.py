@@ -50,7 +50,7 @@ def parse_rc_features(feature):
             'platform': ['windows'],
             'zip_url': 'https://github.com/fcurrk/RustDeskTempTopMostWindow/releases/download/v0.2'
                        '/TempTopMostWindow_x64.zip',
-            'checksum_url': 'https://github.com/fufesou/RustDeskTempTopMostWindow/releases/download/v0.2/TempTopMostWindow_x64.zip.checksum_md5',
+            'checksum_url': 'https://github.com/fcurrk/RustDeskTempTopMostWindow/releases/download/v0.2/TempTopMostWindow_x64.zip.checksum_md5',
             'include': ['WindowInjection.dll'],
         }
     }
