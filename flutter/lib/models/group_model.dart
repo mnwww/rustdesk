@@ -26,7 +26,7 @@ class GroupModel {
   GroupModel(this.parent);
 
   Future<void> pull({force = true, quiet = false}) async {
-  /*  if (!gFFI.userModel.isLogin || groupLoading.value) return;
+    if (!gFFI.userModel.isLogin || groupLoading.value) return;
     if (!force && initialized) return;
     if (!quiet) {
       groupLoading.value = true;
@@ -43,7 +43,6 @@ class GroupModel {
     } else {
       _saveCache();
     }
-  */
   }
 
   Future<void> _pull() async {

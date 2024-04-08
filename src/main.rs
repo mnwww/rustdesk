@@ -13,6 +13,7 @@ fn main() {
     common::test_rendezvous_server();
     common::test_nat_type();
     #[cfg(target_os = "android")]
+//    crate::common::check_software_update();
     common::global_clean();
 }
 
@@ -51,7 +52,7 @@ fn main() {
     );
     let matches = App::new("rustdesk")
         .version(crate::VERSION)
-        .author("CarrieZ Studio<info@rustdesk.com>")
+        .author("Purslane Ltd<info@rustdesk.com>")
         .about("RustDesk command line tool")
         .args_from_usage(&args)
         .get_matches();
