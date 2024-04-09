@@ -187,7 +187,8 @@ jobs:
                ninja-build \
                pkg-config \
                tree \
-               wget
+               wget \
+	       docker
             # we have libopus compiled by us.
             apt-get remove -y libopus-dev || true
             # output devs
