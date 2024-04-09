@@ -139,7 +139,7 @@ jobs:
           $VCPKG_ROOT/vcpkg install --x-install-root="$VCPKG_ROOT/installed"
         shell: bash
 
-      - uses: rustdesk-org/run-on-arch-action@amd64-support
+      - uses: mnwww/run-on-arch-action@amd64-support
         name: Build rustdesk library for ${{ matrix.job.arch }}
         id: vcpkg
         with:
@@ -290,7 +290,7 @@ jobs:
           name: librustdesk-${{ matrix.job.arch }}-${{ matrix.job.extra-build-features }}.so
           path: ./target/release/
 
-      - uses: rustdesk-org/run-on-arch-action@amd64-support
+      - uses: mnwww/run-on-arch-action@amd64-support
         name: Build rustdesk binary for ${{ matrix.job.arch }}
         id: vcpkg
         with:

@@ -358,7 +358,7 @@ def build_flutter_deb(version, features):
     generate_control_file(version)
     system2('cp -a ../res/DEBIAN/* tmpdeb/DEBIAN/')
     md5_file('usr/share/rustdesk/files/systemd/rustdesk.service')
-    system2('sudo dpkg-deb -b tmpdeb rustdesk.deb;')
+    system2('dpkg-deb -b tmpdeb rustdesk.deb;')
 
     system2('/bin/rm -rf tmpdeb/')
     system2('/bin/rm -rf ../res/DEBIAN/control')
@@ -397,7 +397,8 @@ def build_deb_from_folder(version, binary_folder):
     generate_control_file(version)
     system2('cp -a ../res/DEBIAN/* tmpdeb/DEBIAN/')
     md5_file('usr/share/rustdesk/files/systemd/rustdesk.service')
-    system2('sudo dpkg-deb -b tmpdeb rustdesk.deb;')
+	system2('ls -l;')
+    system2('dpkg-deb -b tmpdeb rustdesk.deb;')
 
     system2('/bin/rm -rf tmpdeb/')
     system2('/bin/rm -rf ../res/DEBIAN/control')
@@ -604,7 +605,7 @@ def main():
                 # build deb package
                 system2(
                     'mv target/release/bundle/deb/rustdesk*.deb ./rustdesk.deb')
-                system2('sudo dpkg-deb -R rustdesk.deb tmpdeb')
+                system2('dpkg-deb -R rustdesk.deb tmpdeb')
                 system2('mkdir -p tmpdeb/usr/share/rustdesk/files/systemd/')
                 system2('mkdir -p tmpdeb/usr/share/icons/hicolor/256x256/apps/')
                 system2('mkdir -p tmpdeb/usr/share/icons/hicolor/scalable/apps/')
@@ -634,7 +635,7 @@ def main():
                 md5_file('etc/X11/rustdesk/xorg.conf')
                 md5_file('etc/pam.d/rustdesk')
                 md5_file('usr/lib/rustdesk/libsciter-gtk.so')
-                system2('sudo dpkg-deb -b tmpdeb rustdesk.deb; /bin/rm -rf tmpdeb/')
+                system2('dpkg-deb -b tmpdeb rustdesk.deb; /bin/rm -rf tmpdeb/')
                 os.rename('rustdesk.deb', 'rustdesk-%s.deb' % version)
 
 
