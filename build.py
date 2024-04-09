@@ -76,8 +76,10 @@ def parse_rc_features(feature):
         return get_all_features()
     elif isinstance(feature, list):
         if windows:
+            # download third party is deprecated, we use github ci instead.
             # force add PrivacyMode
-            feature.append('PrivacyMode')
+            # feature.append('PrivacyMode')
+            pass
         for feat in feature:
             if isinstance(feat, str) and feat.upper() == 'ALL':
                 return get_all_features()
