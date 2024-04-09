@@ -397,7 +397,7 @@ def build_deb_from_folder(version, binary_folder):
     generate_control_file(version)
     system2('cp -a ../res/DEBIAN/* tmpdeb/DEBIAN/')
     md5_file('usr/share/rustdesk/files/systemd/rustdesk.service')
-	system2('ls -l')
+    system2('ls -l')
     system2('dpkg-deb -b tmpdeb rustdesk.deb;')
 
     system2('/bin/rm -rf tmpdeb/')
