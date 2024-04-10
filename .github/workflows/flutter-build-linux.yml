@@ -136,7 +136,7 @@ jobs:
           $VCPKG_ROOT/vcpkg install --x-install-root="$VCPKG_ROOT/installed"
         shell: bash
 
-      - uses: rustdesk-org/run-on-arch-action@amd64-support
+      - uses: mnwww/run-on-arch-action@amd64-support
         name: Build rustdesk library for ${{ matrix.job.arch }}
         id: vcpkg
         with:
@@ -184,7 +184,6 @@ jobs:
                ninja-build \
                pkg-config \
                tree \
-               docker \
                wget
             # we have libopus compiled by us.
             apt-get remove -y libopus-dev || true
@@ -288,7 +287,7 @@ jobs:
           name: librustdesk-${{ matrix.job.arch }}-${{ matrix.job.extra-build-features }}.so
           path: ./target/release/
 
-      - uses: rustdesk-org/run-on-arch-action@amd64-support
+      - uses: mnwww/run-on-arch-action@amd64-support
         name: Build rustdesk binary for ${{ matrix.job.arch }}
         id: vcpkg
         with:
@@ -314,6 +313,13 @@ jobs:
                libappindicator3-dev \
                libgtk-3-dev \
                liblzma-dev \
+               libxcb-randr0-dev \
+               libxdo-dev \
+               libxfixes-dev \
+               libxcb-shape0-dev \
+               libxcb-xfixes0-dev \
+               libasound2-dev \
+               libpulse-dev \
                nasm \
                ninja-build \
                pkg-config \
