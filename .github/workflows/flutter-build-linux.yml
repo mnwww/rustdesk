@@ -278,6 +278,7 @@ jobs:
                libarchive-tools \
                libgtk-3-dev \
                nasm \
+               docker \
                wget
           mkdir -p ./target/release/
 
@@ -313,13 +314,6 @@ jobs:
                libappindicator3-dev \
                libgtk-3-dev \
                liblzma-dev \
-               libxcb-randr0-dev \
-               libxdo-dev \
-               libxfixes-dev \
-               libxcb-shape0-dev \
-               libxcb-xfixes0-dev \
-               libasound2-dev \
-               libpulse-dev \
                nasm \
                ninja-build \
                pkg-config \
