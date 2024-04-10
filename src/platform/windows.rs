@@ -1122,6 +1122,7 @@ sLinkFile = \"{tmp_path}\\{app_name}.lnk\"
 
 Set oLink = oWS.CreateShortcut(sLinkFile)
     oLink.TargetPath = \"{exe}\"
+    oLink.WorkingDirectory = \"{path}\"
 oLink.Save
         "
         ),
@@ -1141,6 +1142,7 @@ Set oLink = oWS.CreateShortcut(sLinkFile)
     oLink.TargetPath = \"{exe}\"
     oLink.Arguments = \"--uninstall\"
     oLink.IconLocation = \"msiexec.exe\"
+    oLink.WorkingDirectory = \"{path}\"
 oLink.Save
         "
         ),
@@ -1487,6 +1489,7 @@ sLinkFile = objFSO.BuildPath(strDesktop, \"{id}.lnk\")
 Set oLink = oWS.CreateShortcut(sLinkFile)
     oLink.TargetPath = \"{exe}\"
     oLink.Arguments = \"--connect {id}\"
+    oLink.WorkingDirectory = \"{path}\"
 oLink.Save
         "
         ),
@@ -2127,6 +2130,7 @@ sLinkFile = \"{tmp_path}\\{app_name} Tray.lnk\"
 Set oLink = oWS.CreateShortcut(sLinkFile)
     oLink.TargetPath = \"{exe}\"
     oLink.Arguments = \"--tray\"
+    oLink.WorkingDirectory = \"{path}\"
 oLink.Save
         ",
             app_name = crate::get_app_name(),

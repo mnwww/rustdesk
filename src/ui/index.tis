@@ -370,7 +370,7 @@ class MyIdMenu: Reactor.Component {
         msgbox("custom-nocancel-nook-hasclose", translate("About") + " " + name, "<div style='line-height: 2em'> \
             <div>Version: " + handler.get_version() + " \
             <div>Fingerprint: " + handler.get_fingerprint() + " \
-	    <div style='background: #2c8cff; color: white; padding: 1em; margin-top: 1em;'>Copyright &copy; " + new Date().getFullYear() + " Purslane Ltd.\
+            <div style='background: #2c8cff; color: white; padding: 1em; margin-top: 1em;'>Copyright &copy; " + new Date().getFullYear() + " Purslane Ltd.\
             <br />" + handler.get_license() + " \
             <p style='font-weight: bold'>Minijer Special Edition</p>\
             </div>\
