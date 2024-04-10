@@ -1227,7 +1227,7 @@ md \"{path}\"
 //reg add {subkey} /f /v WindowsInstaller /t REG_DWORD /d 0
 //cscript \"{mk_shortcut}\"
 //cscript \"{uninstall_shortcut}\"
-//{tray_shortcut}
+//{tray_shortcuts}
 //{shortcuts}
 //copy /Y \"{tmp_path}\\Uninstall {app_name}.lnk\" \"{path}\\\"
 {dels}
