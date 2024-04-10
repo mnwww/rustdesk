@@ -1489,7 +1489,6 @@ sLinkFile = objFSO.BuildPath(strDesktop, \"{id}.lnk\")
 Set oLink = oWS.CreateShortcut(sLinkFile)
     oLink.TargetPath = \"{exe}\"
     oLink.Arguments = \"--connect {id}\"
-    oLink.WorkingDirectory = \"{path}\"
 oLink.Save
         "
         ),
@@ -2130,7 +2129,6 @@ sLinkFile = \"{tmp_path}\\{app_name} Tray.lnk\"
 Set oLink = oWS.CreateShortcut(sLinkFile)
     oLink.TargetPath = \"{exe}\"
     oLink.Arguments = \"--tray\"
-    oLink.WorkingDirectory = \"{path}\"
 oLink.Save
         ",
             app_name = crate::get_app_name(),
