@@ -325,7 +325,7 @@ class MyIdMenu: Reactor.Component {
 
                 <li #allow-darktheme><span>{svg_checkmark}</span>{translate('Dark Theme')}</li>
                 <Languages />
-                <li>{handler.get_app_name()} {translate('Version')} {": "}{handler.get_version()}</li>
+                <li>{translate('Version')} {": "}{handler.get_version()}</li>
             </menu>
         </popup>;
     }
