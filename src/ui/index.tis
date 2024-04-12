@@ -325,7 +325,7 @@ class MyIdMenu: Reactor.Component {
 
                 <li #allow-darktheme><span>{svg_checkmark}</span>{translate('Dark Theme')}</li>
                 <Languages />
-                <li>{translate('Version')} {" "}{handler.get_app_version()}</li>
+                <li>{translate('Version')} {" "}{handler.get_app_name()} {" "}{handler.get_version()}</li>
             </menu>
         </popup>;
     }
@@ -349,7 +349,7 @@ class MyIdMenu: Reactor.Component {
     event click $(li#logout) () {
         logout();
     }
-
+    
     function toggleMenuState() {
         for (var el in $$(menu#config-options>li)) {
             if (el.id && el.id.indexOf("enable-") == 0) {
