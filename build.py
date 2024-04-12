@@ -24,17 +24,20 @@ else:
 flutter_build_dir_2 = f'flutter/{flutter_build_dir}'
 skip_cargo = False
 
+
 def get_arch() -> str:
     custom_arch = os.environ.get("ARCH")
     if custom_arch is None:
         return "amd64"
     return custom_arch
 
+
 def system2(cmd):
     err = os.system(cmd)
     if err != 0:
         print(f"Error occurred when executing: {cmd}. Exiting.")
         sys.exit(-1)
+
 
 def get_version():
     with open("Cargo.toml", encoding="utf-8") as fh:
