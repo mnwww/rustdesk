@@ -58,10 +58,9 @@ jobs:
       - name: Install flutter
         uses: subosito/flutter-action@v2
         with:
-          toolchain: "1.75"
-          target: ${{ matrix.job.target }}
-          override: true
-          components: "rustfmt"
+          channel: "stable"
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
 
       # - name: Replace engine with rustdesk custom flutter engine
       #   run: |
@@ -74,10 +73,10 @@ jobs:
       - name: Install Rust toolchain
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: stable
+          toolchain: "1.75"
           target: ${{ matrix.job.target }}
           override: true
-          profile: minimal # minimal component installation (ie, no documentation)
+          components: "rustfmt"
 
       - uses: Swatinem/rust-cache@v2
         with:
