@@ -286,6 +286,8 @@ jobs:
             
             # build
             pushd /workspace
+            chmod -R 755 ./res/DEBIAN/
+            chmod a+x ./res/inline-sciter.py
             python3 ./res/inline-sciter.py
             export VCPKG_ROOT=/opt/artifacts/vcpkg
             export ARCH=armhf
@@ -299,6 +301,7 @@ jobs:
             mkdir -p ./Release
             mv ./target/release/rustdesk ./Release/rustdesk
             wget -O ./Release/libsciter-gtk.so https://github.com/c-smile/sciter-sdk/raw/master/bin.lnx/arm32/libsciter-gtk.so
+            chmod a+x ./build.py
             ./build.py --package ./Release
 
       - name: Rename rustdesk
@@ -438,6 +441,8 @@ jobs:
               ;;
             esac
             export CARGO_INCREMENTAL=0
+            chmod -R 755 ./res/DEBIAN/
+            chmod a+x ./build.py
             python3 ./build.py --flutter --hwcodec --skip-cargo
             # rpm package
             echo -e "start packaging fedora package"
