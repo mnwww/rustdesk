@@ -158,3 +158,12 @@ jobs:
           for name in rustdesk*??.dmg; do
               mv "$name" "${name%%.dmg}-${{ matrix.job.arch }}.dmg"
           done
+
+      - name: Publish DMG package
+        if: env.UPLOAD_ARTIFACT == 'true'
+        uses: softprops/action-gh-release@v1
+        with:
+          prerelease: true
+          tag_name: ${{ env.TAG_NAME }}
+          files: |
+            rustdesk*-${{ matrix.job.arch }}.dmg
