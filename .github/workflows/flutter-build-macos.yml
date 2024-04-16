@@ -137,6 +137,7 @@ jobs:
       - name: Build rustdesk
         run: |
           # --hwcodec not supported on macos yet
+          chmod a+x ./build.py
           ./build.py --flutter ${{ matrix.job.extra-build-args }}
 
       - name: Codesign app and create signed dmg
